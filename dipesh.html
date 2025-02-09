@@ -1,11 +1,171 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dipesh Gautam</title>
+    <title>Will You Be Mine, Kreetika?</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(45deg, #ff69b4, #ff1493, #ff007f);
+            font-family: 'Pacifico', cursive;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .heart {
+            position: absolute;
+            color: pink;
+            animation: float 6s infinite;
+            opacity: 0;
+        }
+
+        .container {
+            text-align: center;
+            z-index: 1;
+        }
+
+        .teddies {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px;
+        }
+
+        .teddy {
+            width: 150px;
+            height: 200px;
+            position: relative;
+            margin: 0 20px;
+        }
+
+        .girl {
+            background: #d17c55;
+            border-radius: 50px 50px 60px 60px;
+        }
+
+        .boy {
+            background: #a8644e;
+            border-radius: 50px 50px 60px 60px;
+        }
+
+        .name {
+            font-size: 24px;
+            color: white;
+            text-shadow: 0 0 10px #ff69b4;
+            margin: 10px 0;
+        }
+
+        .message {
+            color: white;
+            font-size: 20px;
+            margin: 20px;
+            max-width: 500px;
+        }
+
+        .buttons {
+            margin: 20px;
+        }
+
+        button {
+            padding: 15px 30px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 30px;
+            font-family: 'Pacifico', cursive;
+            font-size: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #yes {
+            background: #ff69b4;
+            color: white;
+        }
+
+        #no {
+            background: #808080;
+            color: white;
+            position: relative;
+            cursor: not-allowed;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            color: white;
+            font-size: 12px;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>My name is Dipesh Gautam</h1>
+    <div class="hearts" id="hearts"></div>
+    
+    <div class="container">
+        <div class="teddies">
+            <div class="teddy girl">
+                <div class="name">Kreetika 💖</div>
+            </div>
+            <div class="teddy boy">
+                <div class="name">Dipesh 💝</div>
+            </div>
+        </div>
+        
+        <div class="message">
+            My dearest Kreetika, you make every moment magical and fill my days with love. 
+            Will you do me the honor of being my Valentine? I promise to cherish you always. 
+            Love you babe, will you be mine forever? 💕
+        </div>
+
+        <div class="buttons">
+            <button id="yes" onclick="alert('Yay! You just made me the happiest person! 😍💘')">YES!</button>
+            <button id="no" onmouseover="moveButton()">NO</button>
+        </div>
+    </div>
+
+    <footer>
+        Developed with 💖 by Dipeshgautam | © 2024 All rights reserved
+    </footer>
+
+    <script>
+        function createHearts() {
+            const heartsContainer = document.getElementById('hearts');
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '❤';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 5 + 's';
+                heartsContainer.appendChild(heart);
+            }
+        }
+
+        function moveButton() {
+            const noBtn = document.getElementById('no');
+            const x = Math.random() * (window.innerWidth - 100);
+            const y = Math.random() * (window.innerHeight - 50);
+            noBtn.style.transform = `translate(${x - 50}px, ${y - 25}px)`;
+        }
+
+        createHearts();
+    </script>
 </body>
 </html>
